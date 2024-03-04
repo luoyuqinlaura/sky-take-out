@@ -138,3 +138,23 @@ controller, service, mapping
 
 1.用户名是unique的，我们先测试swagger会报错，然后在handler里全局处理这个异常
 
+2. createdId 和updatedId是写死的
+
+![image-20240304111702676](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240304111702676.png)
+
+![image-20240304111924677](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240304111924677.png)
+
+**ThreadLocal**
+
+客户端发出的每一次请求，tomcat都会分配一个单独的线程
+
+![image-20240304112137909](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240304112137909.png)
+
+![image-20240304112221421](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240304112221421.png)
+
+我们写了一个工具类basecontext
+
+然后在拦截器存，在service取
+
+
+
