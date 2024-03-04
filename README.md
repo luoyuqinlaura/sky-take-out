@@ -132,7 +132,7 @@ controller, service, mapping
 
 
 
-## 代码完善
+### 代码完善
 
 异常处理
 
@@ -155,6 +155,20 @@ controller, service, mapping
 我们写了一个工具类basecontext
 
 然后在拦截器存，在service取
+
+
+
+## 员工分页查询
+
+GET。 /admin/employee/page
+
+![image-20240304121108704](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240304121108704.png)
+
+
+
+后端返回给前端的都是Result范型，这里针对分页查询，统一都会封装成Pageresult对象，和这里也是对应的。然后再变成Result<PageResult>
+
+![image-20240304121448287](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240304121448287.png)
 
 
 
