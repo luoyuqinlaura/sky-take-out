@@ -100,3 +100,32 @@ knige4j是swagger的框架，更容易操作
 
 
 
+
+
+# Day2: 员工管理开发
+
+## 新增员工
+
+![image-20240303162017676](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240303162017676.png)
+
+账号唯一，手机号11，身份证号18，密码默认123456
+
+
+
+几个逻辑层的开发：
+
+controller, service, mapping
+
+注意，controller和service一致都是处理DTO，但是到了maing层就是处理真正的entity，所以涉及到beanutils.copyProperties(original，aim).
+
+
+
+代码开发以后，为了避免以后调试的麻烦，添加jwt的参数设置
+
+![image-20240303171119364](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240303171119364.png)
+
+![image-20240303171213751](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240303171213751.png)
+
+这个参数名称是在application.yml里写好的
+
+![image-20240303173854458](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240303173854458.png)

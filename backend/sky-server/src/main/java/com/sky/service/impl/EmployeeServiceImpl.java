@@ -1,7 +1,9 @@
 package com.sky.service.impl;
 
 import com.sky.constant.MessageConstant;
+import com.sky.constant.PasswordConstant;
 import com.sky.constant.StatusConstant;
+import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.entity.Employee;
 import com.sky.exception.AccountLockedException;
@@ -9,11 +11,13 @@ import com.sky.exception.AccountNotFoundException;
 import com.sky.exception.PasswordErrorException;
 import com.sky.mapper.EmployeeMapper;
 import com.sky.service.EmployeeService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -55,6 +59,38 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         //3、返回实体对象
         return employee;
+    }
+
+    /**
+     * 新增员工
+     * @param employeeDTO
+     */
+
+    public void save(EmployeeDTO employeeDTO) {
+        //在数据库层，还是建议用实体类，所以要从DTO转化成employ实体类
+        Employee employee = new Employee();
+
+        //对象属性拷贝，避免setId,getId的重复，只要dto和employ的属性名一致，比如都是id，而不是一个是id一个数employId
+        BeanUtils.copyProperties(employeeDTO, employee);
+
+        //然而我们知道DTO里的属性是少于employ的，所以我们需要设置其他的属性
+        //设置账号的状态，默认正常状态为1，锁定是0
+        employee.setStatus(StatusConstant.ENABLE);
+
+        //设置默认密码123456，记得存入数据库是md5加密过的
+        employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
+
+        //设置当前记录的设置时间和修改时间
+        employee.setCreateTime(LocalDateTime.now());
+        employee.setUpdateTime(LocalDateTime.now());
+
+        //设置创建人id和修改人id
+        // TODO 后期改为当前登陆用户的id，此时初始化是由数据库自增创建的
+        employee.setCreateUser(10L);
+        employee.setUpdateUser(10L);
+
+        //封装好后，持久层操作
+        employeeMapper.insert(employee);
     }
 
 }
