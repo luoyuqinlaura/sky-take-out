@@ -129,3 +129,12 @@ controller, service, mapping
 这个参数名称是在application.yml里写好的
 
 ![image-20240303173854458](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240303173854458.png)
+
+
+
+## 代码完善
+
+异常处理
+
+1.用户名是unique的，我们先测试swagger会报错，然后在handler里全局处理这个异常
+
