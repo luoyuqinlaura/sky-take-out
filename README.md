@@ -158,6 +158,10 @@ controller, service, mapping
 
 
 
+ThreadLocal是我们用的插件里的底层逻辑，代表他怎么缓存id
+
+但实际上我们使用Page这个写好的来完成limit操作
+
 ## 员工分页查询
 
 GET。 /admin/employee/page
@@ -177,4 +181,20 @@ GET。 /admin/employee/page
 建议第二种
 
 ![image-20240304152341688](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240304152341688.png)
+
+
+
+
+
+
+
+## 启用，禁用员工账号
+
+![image-20240304161935589](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240304161935589.png)
+
+
+
+这里我们在持久层写的是update方法，用mybatis来管理，mapper.xml里写update方法，能够动态的更新所有属性。现在的需求是根据id改status，之后可以根据id改其他的时候就不用再重复写。
+
+
 

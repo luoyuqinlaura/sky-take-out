@@ -115,4 +115,26 @@ public class EmployeeServiceImpl implements EmployeeService {
         return new PageResult(total, records);
     }
 
+    /**
+     * 启用禁用员工
+     * @param status
+     * @param id
+     */
+    public void startOrStop(Integer status, Long id) {
+        // update employee set status = ? where id = ?
+        // 由于我们希望这个update的方法是可以通用的，而不是仅仅更新status，所以我们会在持久层搞一个update方法。把想要更改的参数，都包装到实体类里
+        /*Employee employee = new Employee();
+        employee.setStatus(status);
+        employee.setId(id);*/
+
+        //因为Employee实体类里有@Builder构建器，所以也可以写成
+        Employee employee = Employee.builder()
+                .status(status)
+                .id(id)
+                .build();
+
+        employeeMapper.update(employee);
+    }
+
+
 }
