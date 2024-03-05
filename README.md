@@ -172,3 +172,9 @@ GET。 /admin/employee/page
 
 
 
+### 代码完善
+
+建议第二种
+
+![image-20240304152341688](/Users/biubiubiu/Library/Application Support/typora-user-images/image-20240304152341688.png)
+
