@@ -206,3 +206,46 @@ GET。 /admin/employee/page
 
 涉及两个接口：1.根据id查询员工信息（GET 2.编辑员工信息（PUT
 
+
+
+
+
+# Day3
+
+## 公共字段自动填充
+
+insert: Create-time, create-user, 
+
+insert, update: update-time, update-user 
+
+自定义注解：@Autofill,在mapper的方法上加上这个注解
+
+自定义切面类autofillaspect, 统一拦截这些被注解的方法，通过反射为公共字段赋值
+
+
+
+
+
+## 新增菜品
+
+mock
+
+
+
+dynamic typing... 
+
+
+
+routing.... ========== pipe....ngGenerator
+
+
+
+
+
+angular........
+
+=====================
+
+half......
+
+Suggestions........ 
